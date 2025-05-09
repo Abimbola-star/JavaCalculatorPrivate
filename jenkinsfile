@@ -3,22 +3,13 @@ pipeline {
 
     environment {
         IMAGE_NAME = 'abimbola1994/java-web-calculator'
-        DOCKER_HUB_CREDENTIALS = 'docker-hub-creds' // Create this in Jenkins > Credentials
+        DOCKER_HUB_CREDENTIALS = 'docker-hub-creds'
     }
 
     stages {
         stage('Checkout') {
             steps {
-                script {
-                    git branch: "dev",
-                        url: 'https://github.com/Abimbola-star/JavaCalculatorPrivate.git'
-                }
-            }
-        }
-
-        stage('Build with Maven') {
-            steps {
-                sh 'mvn clean package'
+                git branch: 'dev', url: 'https://github.com/Abimbola-star/JavaCalculatorPrivate.git'
             }
         }
 
@@ -50,3 +41,4 @@ pipeline {
         }
     }
 }
+
